@@ -1,0 +1,27 @@
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import {BrowserRouter} from 'react-router-dom'
+import Nursedata from "./context/Nursedata.jsx";
+import SidebarContext from "./context/sidebarContext.jsx";
+import {ToastContainer} from 'react-toastify'
+import RecipesCOntext from "./context/RecipesCOntext.jsx";
+import SearchContext from "./context/SearchContext.jsx";
+
+createRoot(document.getElementById("root")).render(
+
+    <SearchContext>
+
+    <RecipesCOntext>
+
+    <Nursedata>
+        <SidebarContext>
+    <BrowserRouter>
+        <App />
+        <ToastContainer/>
+    </BrowserRouter>
+    </SidebarContext>
+    </Nursedata>
+    </RecipesCOntext>
+    </SearchContext>
+);
