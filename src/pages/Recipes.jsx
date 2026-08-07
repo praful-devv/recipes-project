@@ -5,9 +5,12 @@ import { recipes } from "../context/RecipesCOntext";
 import Search from "../components/Search";
 import { Sea } from "../context/SearchContext";
 import { useNavigate } from "react-router-dom";
+import {nanoid} from  'nanoid'
+import CreateRecipes from "../components/CreateRecipes";
 
 const Recipes = () => {
   const [alldata, setdata] = useState([]);
+  const [pastdata, setpastdata] = useState([]);
 
   const [allrecipedData, fm, setform, makecart, setcart] = useContext(recipes);
   let [sea, setsea] = useContext(Sea);
@@ -16,28 +19,36 @@ const Recipes = () => {
   async function data() {
     let { data } = await allrecipedData;
     let { recipes } = data;
-    makecart?recipes.push(makecart):''
+    let newdata  = makecart?[...pastdata,makecart] :pastdata
+    setpastdata(newdata)
+    let olddata =  [...recipes,...newdata]
    
     
-    setdata(recipes);
+    setdata(olddata);
   }
-
-
-
+ 
+  
+  
+  
   useEffect(() => {
+   
     data();
-  }, []);
+  }, [makecart]);
 
   1;
   const query = (sea || "").trim().replace(/\s+/g, " ").toLowerCase();
   const searchcart = alldata.filter((val) =>
-    val.name.toLowerCase().includes(query),
-  );
+  val && val.name?.toLowerCase().includes(query),
+  ) 
+
+
 
   return (
     <div className="bg-gray-900 h-screen  flex flex-col">
       <Navbar />
       <Search />
+     <CreateRecipes />
+
       <div className=" flex  flex-wrap bg-gray-900  md:justify-center p-2 gap-2">
         {searchcart.map((elem, id) => {
           return (

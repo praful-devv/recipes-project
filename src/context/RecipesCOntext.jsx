@@ -7,7 +7,7 @@ const RecipesCOntext = ({ children }) => {
   let [form, setform] = useState(false);
 
   async function Recipesdata() {
-    let recipesData = await axios.get("https://dummyjson.com/recipes?limit=10");
+    let recipesData = await axios.get("https://dummyjson.com/recipes?limit=50");
 
     return recipesData;
   }

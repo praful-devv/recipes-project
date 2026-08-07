@@ -14,6 +14,7 @@ const Search = () => {
     <div className="p-2 flex justify-center items-center gap-2">
      
       <input
+      value={sea}
       onChange={(e)=>{setsea(e.target.value)}} 
       className="text-white outline-0 border-white border-b text-center" id="Email"  />
      

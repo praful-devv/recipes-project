@@ -1,28 +1,35 @@
-import React, { useContext, useState } from 'react'
-import { useForm } from 'react-hook-form';
-import { recipes } from '../context/RecipesCOntext';
-import { CrossIcon, X, XIcon } from 'lucide-react';
+import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { recipes } from "../context/RecipesCOntext";
+import { CrossIcon, X, XIcon } from "lucide-react";
+import {toast} from 'react-toastify'
 
 const RecipesForm = () => {
-    let {register,handleSubmit,reset,formState:{errors}}=useForm()
-    const [res, fm, setform, makecart, setcart] = useContext(recipes);
-    
-    
-    function form(data){
+  let {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [res, fm, setform, makecart, setcart] = useContext(recipes);
 
-         let newdata = {...data,image: URL.createObjectURL(data.image[0])}
-       setcart(newdata);
-     
-    //  data ?  setform(false) : ' '
-    //  reset()
-        
-        
-    }
-    
+  let ids = 50;
+  function form(data) {
+    let newdata = {
+      ...data,
+      id: ids + 1,
+      image: URL.createObjectURL(data.image[0]),
+    };
+    setcart(newdata);
+
+   toast.success('Recipe created');
+    reset();
+  }
+
   return (
     <div className="py-8 flex-col flex justify-center  items-center ">
       <form
-        className=" bg-gray-300 flex rounded-2xl flex-col gap-2 relative items-center p-16"
+        className=" bg-gray-300 flex rounded-2xl flex-col gap-2 relative items-center p-16 "
         onSubmit={handleSubmit(form)}
       >
         <p
@@ -38,7 +45,6 @@ const RecipesForm = () => {
             className="text-black bg-gray-500 w-46 p-2 text-sm"
             type="file"
             {...register("image", { required: "recipe image is required" })}
-            
           />
 
           {errors.image ? (
@@ -52,7 +58,7 @@ const RecipesForm = () => {
 
         <input
           type="text"
-          className="outline-0 border-2"
+          className="outline-0 border-b-2"
           {...register("name", { required: "name is required" })}
           placeholder="Name"
         />
@@ -64,7 +70,7 @@ const RecipesForm = () => {
         )}
         <input
           type="text"
-          className="outline-0 border-2"
+          className="outline-0 border-b-2"
           {...register("tags", { required: "tags is required" })}
           placeholder="tags"
         />
@@ -75,7 +81,7 @@ const RecipesForm = () => {
         )}
         <input
           type="text"
-          className="outline-0 border-2"
+          className="outline-0 border-b-2"
           {...register("cuisine", { required: "cuisine is required" })}
           placeholder="cuisine"
         />
@@ -88,7 +94,7 @@ const RecipesForm = () => {
         )}
         <input
           type="text"
-          className="outline-0 border-2"
+          className="outline-0 border-b-2"
           {...register("prepTimeMinutes", {
             required: "prepTimeMinutes is required",
           })}
@@ -102,10 +108,50 @@ const RecipesForm = () => {
           " "
         )}
 
-        <button className="text-white bg-green-500">done</button>
+        <input
+          className="outline-0 border-b-2"
+          placeholder="Descripition"
+          type="text"
+          {...register("des", { required: "descripition" })}
+        />
+
+        {errors.des ? (
+          <small className="text-red-600 text-sm">{errors.des.message}</small>
+        ) : (
+          ""
+        )}
+
+        <input
+          className="outline-0 border-b-2"
+          type="text"
+          {...register("instructions", { required: "filled the data" })}
+          placeholder="instructions"
+        />
+        {errors.instructions ? (
+          <small className="text-red-600 text-sm">
+            {errors.instructions.message}
+          </small>
+        ) : (
+          ""
+        )}
+        <input
+          className="outline-0 border-b-2"
+          type="text"
+          {...register("ingredients", { required: "filled the data" })}
+          placeholder="ingredients"
+        />
+        {errors.ingredients ? (
+          <small className="text-red-600 text-sm">
+            {errors.ingredients.message}
+          </small>
+        ) : (
+          ""
+        )}
+
+        <button className="text-white bg-green-500 px-2 rounded">done</button>
       </form>
     </div>
   );
-}
+};
 
-export default RecipesForm
+export default RecipesForm;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Favourite = () => {
 
@@ -94,7 +95,9 @@ const Favourite = () => {
                   setdata(newdata);
 
                   localStorage.setItem("favourite", JSON.stringify(newdata));
-
+                  toast('romove from favourite',{
+                    className:'!text-red-500 !w-60'
+                  })
                   //  setdata( alldata.splice(idx,1))
                   //  console.log(alldata.splice(idx, 1));
                 }}
