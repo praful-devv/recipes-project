@@ -45,7 +45,7 @@ const Favourite = () => {
         return (
           <div
             key={data.id}
-            className=" w-full flex flex-col md:w-80 md:border-2 border-b-2 md:flex-wrap  border-white p-2 "
+            className="boxb w-full flex flex-col md:w-80   md:flex-wrap   p-2 "
           >
             <div className="flex py-2 px-6 items-center gap-4 justify-between">
               <img

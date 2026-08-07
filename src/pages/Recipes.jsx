@@ -49,12 +49,12 @@ const Recipes = () => {
       <Search />
      <CreateRecipes />
 
-      <div className=" flex  flex-wrap bg-gray-900  md:justify-center p-2 gap-2">
+      <div className=" flex  flex-wrap bg-gray-900  md:justify-center p-2 gap-8">
         {searchcart.map((elem, id) => {
           return (
             <div
               key={id}
-              className=" w-full flex flex-col md:w-80 md:border-2  md:flex-wrap border-b-2 border-white p-2 "
+              className="hover:scale-105 w-full flex flex-col md:w-80 md:border-2  md:flex-wrap border-b-2 border-white p-2 box"
             >
               <div className="flex py-2 px-6 items-center gap-4 justify-between">
                 <img
@@ -63,7 +63,7 @@ const Recipes = () => {
                   src={elem.image}
                 />
 
-                <div className="flex justify-center items-center bg-gray-800 h-20 w-60 p-2 ">
+                <div className="flex justify-center items-center bg-gray-800 h-20  p-2 ">
                   <h3 className="text-sm  text-center font-bold text-white">
                     {elem.name}
                   </h3>
