@@ -51,12 +51,10 @@ html::-webkit-scrollbar {
     animation: rota 20s ;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    animation-play-state: paused;
+    /* animation-play-state: paused; */
     position: relative;
-}
-
-.boxb:hover{
     transition: all ease 0.5s;
     box-shadow: 0 0 25px rgb(127, 14, 208);
     animation-play-state: running;
 }
+

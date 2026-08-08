@@ -36,7 +36,7 @@ const Favourite = () => {
   
    
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <div className="flex flex-wrap justify-center p-4 gap-4">
 
@@ -45,7 +45,7 @@ const Favourite = () => {
         return (
           <div
             key={data.id}
-            className="boxb w-full flex flex-col md:w-80   md:flex-wrap   p-2 "
+            className="boxb shadow shadow-violet-600 w-full flex flex-col md:w-80   md:flex-wrap   p-2 "
           >
             <div className="flex py-2 px-6 items-center gap-4 justify-between">
               <img

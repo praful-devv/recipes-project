@@ -54,7 +54,7 @@ const Recipes = () => {
           return (
             <div
               key={id}
-              className="hover:scale-105 w-full flex flex-col md:w-80 md:border-2  md:flex-wrap border-b-2 border-white p-2 box"
+              className="hover:scale-103 w-full flex flex-col md:w-80 md:border-2  md:flex-wrap border-b-2 border-white p-2 box"
             >
               <div className="flex py-2 px-6 items-center gap-4 justify-between">
                 <img
