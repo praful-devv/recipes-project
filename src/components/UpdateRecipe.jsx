@@ -1,11 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 import { useForm } from "react-hook-form";
+import { XIcon } from "lucide-react";
 import { recipes } from "../context/RecipesCOntext";
-import { CrossIcon, X, XIcon } from "lucide-react";
-import {toast} from 'react-toastify'
+import { getRecipe, upDate } from "../api/Recipe";
+import { postRecipe } from "../api/Recipe";
 
-const RecipesForm = () => {
-  const [res, fm, setform, makecart, setcart] = useContext(recipes);
+const UpdateRecipe = () => {
+  const [allrecipedData, fm, setform, makecart, setcart, update, setupdate] =
+    useContext(recipes);
+
+  let [alldata, setdata] = useState();
 
   let {
     register,
@@ -14,34 +20,54 @@ const RecipesForm = () => {
     formState: { errors },
   } = useForm();
 
-  let ids = 50;
-  function form(data) {
-    console.log(data)
-    let newdata = {
-      ...data,
-      id: ids + 1,
-      image: URL.createObjectURL(data.image[0]),
-    };
-    setcart(newdata);
+  async function res() {
+    let { data } = await getRecipe();
+    setdata(data.recipes);
+  }
 
-   toast.success('Recipe created');
+  useEffect(() => {
+    res();
+  }, []);
+
+  // console.log(update)
+  // console.log(alldata)
+ async function form(data) {
+    let image = URL.createObjectURL(data.image[0]);
+
+    let a = alldata.findIndex((elem) => {
+      return elem.id == update.id
+    });
+
+    let abc ={
+    name : data.name,
+    image : image,
+    tags : data.tags,
+    cuisine : data.cuisine,
+    prepTimeMinutes : data.prepTimeMinutes,
+    des : data.des,
+    instructions : data.instructions,
+    ingredients : data.ingredients,
+
+    }
+
+
+    const response = await upDate(abc,update.id);
+
+    console.log(response.data)
+
+   setupdate(response.data)
+  
     reset();
   }
 
   return (
-    <div className="py-8 flex-col flex justify-center  items-center ">
+    <div className=" h-screen bg-gray-600">
+      <Navbar />
+
       <form
-        className=" bg-gray-300 flex rounded-2xl flex-col gap-2 relative items-center p-16 "
+        className="  flex  flex-col gap-2  items-center p-16 "
         onSubmit={handleSubmit(form)}
       >
-        <p
-          onClick={() => {
-            setform(false);
-          }}
-          className="text-black hover:text-red-500 hover:font-extrabold rounded text-2xl absolute top-5 right-5"
-        >
-          <XIcon />
-        </p>
         <>
           <input
             className="text-black bg-gray-500 w-46 p-2 text-sm"
@@ -156,4 +182,4 @@ const RecipesForm = () => {
   );
 };
 
-export default RecipesForm;
+export default UpdateRecipe;

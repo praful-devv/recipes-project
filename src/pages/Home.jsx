@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="bg-gray-900 h-screen">
       <Navbar />
-     
+     <h1 className="text-white">home</h1>
     </div>
   );
 };

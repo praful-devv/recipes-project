@@ -55,29 +55,29 @@ const Favourite = () => {
               />
 
               <div className="flex justify-center items-center bg-gray-800 h-20 w-60 p-2 ">
-                <h3 className="text-xl  text-center font-bold text-white">
+                <h3 className="text-xl  text-center font-bold text-white capitalize">
                   {data.name}
                 </h3>
               </div>
             </div>
             <div className="flex justify-center ">
               <div className=" grid grid-cols-2 justify-items-center   p-2 gap-2 w-[80%]">
-                <p className="text-white  flex justify-center items-center p-2 h-10 text-lg  w-[99%] text-center bg-gray-500">
+                <p className=" rounded capitalize text-white  flex justify-center items-center p-2 h-10 text-sm  w-[99%] text-center bg-gray-500">
                   {data.tags[0]}
                 </p>
-                <p className="text-white  flex justify-center items-center p-2 h-10 text-lg w-[99%] text-center bg-gray-500">
+                <p className=" rounded capitalize text-white  flex justify-center items-center p-2 h-10 text-sm w-[99%] text-center bg-gray-500">
                   {data.cuisine}
                 </p>
-                <p className="text-white  flex justify-center items-center p-2 h-10 text-lg w-[99%] text-center bg-gray-500">
+                <p className=" rounded capitalize text-white  flex justify-center items-center p-2 h-10 text-sm w-[99%] text-center bg-gray-500">
                   {data.prepTimeMinutes} Minutes
                 </p>
-                <p className="text-white  flex justify-center items-center p-2 h-10 text-lg w-[99%] text-center bg-gray-500">
+                <p className=" rounded capitalize text-white  flex justify-center items-center p-2 h-10 text-sm w-[99%] text-center bg-gray-500">
                   rating: {data.rating}
                 </p>
               </div>
             </div>
             <div className="flex justify-center items-center p-2"></div>
-            <div className="flex gap-6 mt-8 justify-center items-center">
+            <div className="flex gap-6 sm:mt-80 md:mt-2 justify-center items-center">
               <button
               onClick={()=>{
                 navigate(`/order/${data.id}`)

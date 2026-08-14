@@ -41,6 +41,7 @@ const Navbar = () => {
       >
         About
       </NavLink>
+ 
     </div>
   );
 }; 

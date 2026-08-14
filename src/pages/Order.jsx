@@ -12,7 +12,7 @@ const Order = () => {
   const [num, setnum] = useState(3);
 
   let { id } = useParams();
-  let [recepis, fm, setform, makecart, setcart] = useContext(recipes);
+  let [recepis, fm, setform, makecart, setcart ,update, setupdate] = useContext(recipes);
 
   let navigate = useNavigate();
 
@@ -21,6 +21,7 @@ const Order = () => {
 
     let res = data.recipes;
     res.push(makecart);
+    update ? (res[update.id - 1] = update) : res;
     // setdata(data[id])
     let resdata = res.find((elem) => {
       return elem.id == id;
@@ -61,6 +62,7 @@ const Order = () => {
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
       <Navbar />
+
       <div className="  flex flex-col p-4  gap-4 relative">
         <div className="w-full flex items-center mt-6 gap-8">
           <img
@@ -86,7 +88,7 @@ const Order = () => {
           <div className="p-6">
             {Array.isArray(data.ingredients) ? (
               data.ingredients.map((e, index) => (
-                <li className="text-white" key={index}>
+                <li className="text-white break-all" key={index}>
                   {e}
                 </li>
               ))
@@ -94,6 +96,7 @@ const Order = () => {
               <small className="text-white"> {data.ingredients}</small>
             )}
           </div>
+         
           <div className="flex  justify-center">
             <button
               onClick={() => {
@@ -104,9 +107,9 @@ const Order = () => {
                 console.log(deta);
                 deta = JSON.stringify(deta);
 
-                localStorage.setItem("favourite", deta)
-                toast.success('add to favourite')
-             
+                localStorage.setItem("favourite", deta);
+                toast.success("add to favourite");
+
                 // localStorage.getItem("favourite")
                 //   ? localStorage.setItem('favourite',deta.push(JSON.parse(fav)))
                 //   : localStorage.setItem("favourite", JSON.stringify(deta));

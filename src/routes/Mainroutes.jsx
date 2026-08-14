@@ -7,6 +7,7 @@ import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import Favourite from "../pages/Favourite";
 import Order from "../pages/Order";
+import UpdateRecipe from "../components/UpdateRecipe";
 
 const Mainroutes = () => {
   return (
@@ -14,11 +15,13 @@ const Mainroutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/:id" element={<Home />} />
       <Route path="/recipes" element={<Recipes />} />
+      <Route path='/update' element={<UpdateRecipe/>} />
       <Route path="/favourite" element={<Favourite />} />
       <Route path="/order/:id" element={<Order />} />
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />
+      
     </Routes>
   );
 };
