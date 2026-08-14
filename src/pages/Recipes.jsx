@@ -30,7 +30,7 @@ const Recipes = () => {
 
     update ?olddata[update.id-1] = update:olddata
    
-    console.log(olddata)
+   
     setdata(olddata);
     }
     catch(error){

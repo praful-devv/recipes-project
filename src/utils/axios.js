@@ -6,4 +6,28 @@ const api = axios.create({
   withCredentials:true
 });
 
+
+api.interceptors.request.use((config)=>{
+  console.log('request kiya')
+   
+
+  return config
+},
+(error)=>{
+  return Promise.reject(error)
+}
+
+)
+api.interceptors.response.use((response)=>{
+  console.log('response aaya')
+ 
+  return response
+},
+(error)=>{
+  console.log(error)
+  return Promise.reject(error)
+}
+
+)
+
 export default api

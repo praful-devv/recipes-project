@@ -55,7 +55,7 @@ const Favourite = () => {
               />
 
               <div className="flex justify-center items-center bg-gray-800 h-20 w-60 p-2 ">
-                <h3 className="text-xl  text-center font-bold text-white capitalize">
+                <h3 className="text-sm  text-center font-bold text-white capitalize wrap-break-words">
                   {data.name}
                 </h3>
               </div>
@@ -79,9 +79,9 @@ const Favourite = () => {
             <div className="flex justify-center items-center p-2"></div>
             <div className="flex gap-6 sm:mt-80 md:mt-2 justify-center items-center">
               <button
-              onClick={()=>{
-                navigate(`/order/${data.id}`)
-              }}
+                onClick={() => {
+                  navigate(`/order/${data.id}`);
+                }}
                 className="text-red-500  bg-white  px-4 py-2 text-lg rounded-md"
               >
                 Order
@@ -95,9 +95,9 @@ const Favourite = () => {
                   setdata(newdata);
 
                   localStorage.setItem("favourite", JSON.stringify(newdata));
-                  toast('romove from favourite',{
-                    className:'!text-red-500 !w-60'
-                  })
+                  toast("romove from favourite", {
+                    className: "!text-red-500 !w-60",
+                  });
                   //  setdata( alldata.splice(idx,1))
                   //  console.log(alldata.splice(idx, 1));
                 }}
