@@ -9,59 +9,45 @@ import UpdateRecipe from "../components/UpdateRecipe";
 import { toast } from "react-toastify";
 import { getRecipe } from "../api/Recipe";
 
-
 const Recipes = () => {
+  let navigate = useNavigate();
+
   const [alldata, setdata] = useState([]);
   const [pastdata, setpastdata] = useState([]);
-  let navigate = useNavigate();
-  let [sea, setsea] = useContext(Sea);
-  const [allrecipedData, fm, setform, makecart, setcart, update, setupdate] = useContext(recipes);
 
-  
+  let [sea, setsea] = useContext(Sea);
+  const [, , , makecart, setcart, update, setupdate] = useContext(recipes);
 
   async function data() {
+    try {
+      let { data } = await getRecipe();
+      let { recipes } = data;
+      let newdata = makecart ? [...pastdata, makecart] : pastdata;
+      setpastdata(newdata);
+      let olddata = [...recipes, ...newdata];
 
-    try{
-    let { data } = await getRecipe();
-    let { recipes } = data;
-    let newdata  = makecart?[...pastdata,makecart] :pastdata
-    setpastdata(newdata)
-    let olddata =  [...recipes,...newdata]
+      update ? (olddata[update.id - 1] = update) : olddata;
 
-    update ?olddata[update.id-1] = update:olddata
-   
-   
-    setdata(olddata);
+      setdata(olddata);
+    } catch (error) {
+      toast.error(error.message);
     }
-    catch(error){
-     console.log(error.name)
-     toast.error(error.message)
-    }
-   
   }
- 
-  
-  
-  
+
   useEffect(() => {
-   
     data();
-  }, [makecart,update]);
+  }, [makecart, update]);
 
-  1;
   const query = (sea || "").trim().replace(/\s+/g, " ").toLowerCase();
-  const searchcart = alldata.filter((val) =>
-  val && val.name?.toLowerCase().includes(query),
-  ) 
-
-
+  const searchcart = alldata.filter(
+    (val) => val && val.name?.toLowerCase().includes(query),
+  );
 
   return (
     <div className="bg-gray-900 h-screen  flex flex-col">
       <Navbar />
       <Search />
       <CreateRecipes />
-      
 
       <div className=" flex  flex-wrap bg-gray-900  md:justify-center p-2 gap-8">
         {searchcart.map((elem, id) => {

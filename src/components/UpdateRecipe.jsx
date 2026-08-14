@@ -4,14 +4,12 @@ import Navbar from "./Navbar";
 import { useForm } from "react-hook-form";
 import { XIcon } from "lucide-react";
 import { recipes } from "../context/RecipesCOntext";
-import { getRecipe, upDate } from "../api/Recipe";
-import { postRecipe } from "../api/Recipe";
+import { upDate } from "../api/Recipe";
+
 
 const UpdateRecipe = () => {
-  const [allrecipedData, fm, setform, makecart, setcart, update, setupdate] =
-    useContext(recipes);
+  const [, , , , , update, setupdate] = useContext(recipes);
 
-  let [alldata, setdata] = useState();
 
   let {
     register,
@@ -20,23 +18,11 @@ const UpdateRecipe = () => {
     formState: { errors },
   } = useForm();
 
-  async function res() {
-    let { data } = await getRecipe();
-    setdata(data.recipes);
-  }
 
-  useEffect(() => {
-    res();
-  }, []);
 
-  // console.log(update)
-  // console.log(alldata)
  async function form(data) {
     let image = URL.createObjectURL(data.image[0]);
 
-    let a = alldata.findIndex((elem) => {
-      return elem.id == update.id
-    });
 
     let abc ={
     name : data.name,
@@ -51,12 +37,8 @@ const UpdateRecipe = () => {
     }
 
 
-    const response = await upDate(abc,update.id);
-
-    console.log(response.data)
-
+   const response = await upDate(abc, update.id);
    setupdate(response.data)
-  
     reset();
   }
 

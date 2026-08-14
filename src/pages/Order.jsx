@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { recipes } from "../context/RecipesCOntext";
 import { Library } from "lucide-react";
 import { toast } from "react-toastify";
+import { getRecipe } from "../api/Recipe";
 
 const Order = () => {
   const [data, setdata] = useState([]);
@@ -17,23 +18,17 @@ const Order = () => {
   let navigate = useNavigate();
 
   async function Recipesdata() {
-    let { data } = await recepis;
-
+    let { data } = await getRecipe();
     let res = data.recipes;
     res.push(makecart);
     update ? (res[update.id - 1] = update) : res;
-    // setdata(data[id])
+
     let resdata = res.find((elem) => {
       return elem.id == id;
     });
 
     setdata(resdata);
-    // setTimeout(()=>{
-    //   let inst = resdata?.instructions;
-    //   if (inst) {
-    //     console.log(inst.slice(0, 1));
-    //   }
-    // },1000)
+ 
   }
 
   function ml(){
