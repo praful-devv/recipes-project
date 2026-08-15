@@ -35,7 +35,12 @@ const Recipes = () => {
   }
 
   useEffect(() => {
+    console.log('mount hogaya')
     data();
+
+    return ()=>{
+      console.log('unmount hogaya')
+    }
   }, [makecart, update]);
 
   const query = (sea || "").trim().replace(/\s+/g, " ").toLowerCase();
