@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { sidebar } from "../context/sidebarContext";
+import { sidebar } from "../context/SidebarContext";
 import { Menu, MenuIcon, MenuSquareIcon } from "lucide-react";
 
 const Navbar = () => {
