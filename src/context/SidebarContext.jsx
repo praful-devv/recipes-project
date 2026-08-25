@@ -1,8 +1,8 @@
 import React, { createContext,useState } from 'react'
 
 
-export const sidebar = createContext()
 
+export const sidebar = createContext()
 const SidebarContext = ({children}) => {
 
     const [menu, setmenu] = useState("100%");

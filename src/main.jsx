@@ -11,21 +11,17 @@ import SearchContext from "./context/SearchContext.jsx";
 createRoot(document.getElementById("root")).render(
   <SearchContext>
     <RecipesCOntext>
-    
-        <SidebarContext>
-          <BrowserRouter>
-            <App />
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              newestOnTop={true}
-              hideProgressBar={true}
-              
-            
-            />
-          </BrowserRouter>
-        </SidebarContext>
-     
+      <SidebarContext>
+        <BrowserRouter>
+          <App />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            newestOnTop={true}
+            hideProgressBar={true}
+          />
+        </BrowserRouter>
+      </SidebarContext>
     </RecipesCOntext>
   </SearchContext>,
 );
