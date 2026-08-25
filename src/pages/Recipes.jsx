@@ -115,49 +115,6 @@ const Recipes = () => {
           );
         })}
 
-        {/* {alldata.map((elem, id) => {
-          return (
-            <div
-              key={id}
-              className=" w-full flex flex-col md:w-80 md:border-2  md:flex-wrap border-b-2 border-white p-2 "
-            >
-              <div className="flex py-2 px-6 items-center gap-4 justify-between">
-                <img
-                  loading="lazy"
-                  className="w-20 h-20 rounded-full object-cover object-center"
-                  src={elem.image}
-                />
-
-                <div className="flex justify-center items-center bg-gray-800 h-20 w-60 p-2 ">
-                  <h3 className="text-xl text-center font-bold text-white">
-                    {elem.name}
-                  </h3>
-                </div>
-              </div>
-              <div className="flex justify-center ">
-                <div className=" grid grid-cols-2 justify-items-center   p-2 gap-2 w-[60%]">
-                  <p className="text-white  flex justify-center items-center p-2 h-10 text-xs  w-[99%] text-center bg-gray-500">
-                    {elem.tags[0]}
-                  </p>
-                  <p className="text-white  flex justify-center items-center p-2 h-10 text-xs w-[99%] text-center bg-gray-500">
-                    {elem.cuisine}
-                  </p>
-                  <p className="text-white  flex justify-center items-center p-2 h-10 text-xs w-[99%] text-center bg-gray-500">
-                    {elem.prepTimeMinutes} Minutes
-                  </p>
-                  <p className="text-white  flex justify-center items-center p-2 h-10 text-xs w-[99%] text-center bg-gray-500">
-                    rating: {elem.rating}
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-center items-center p-2">
-                <button className="text-white px-6 py-2  bg-green-500 w-30">
-                  Order
-                </button>
-              </div>
-            </div>
-          );
-        })} */}
       </div>
     </div>
   );

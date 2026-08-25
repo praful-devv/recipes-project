@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link,  } from "react-router-dom";
-import { sidebar } from "../context/sidebarContext";
+import { sidebar } from "../context/SidebarContext";
 import { X, XCircle, XIcon, XLineTopIcon } from "lucide-react";
 
 const Sidebar = () => {
